@@ -6,7 +6,7 @@ class Add extends BinaryExpr {
         precedence1 = 0;
         precedence2 = 0;
     }
-
+    //Jagge
     public double op(double op1, double op2) {
         return op1 + op2;
     }
