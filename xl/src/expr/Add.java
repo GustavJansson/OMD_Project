@@ -12,6 +12,7 @@ class Add extends BinaryExpr {
     }
     
     //gustav
+    // Hej gustav!
 
     protected String opString() {
         return "+";
