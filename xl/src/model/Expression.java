@@ -1,13 +1,15 @@
 package model;
 
-public class Expr implements Slot{
+import expr.Expr;
+
+public class Expression implements Slot{
 	
 	private Expr expr;
 
 	@Override
-	public Slot getSlotData() {
+	public String getSlotData() {
 		// TODO Auto-generated method stub
-		return expr;
+		return expr.toString();
 	}
 
 	@Override
