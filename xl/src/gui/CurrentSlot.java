@@ -1,25 +1,21 @@
 package gui;
 
-import java.awt.Color;
 import java.util.*;
 
 public class CurrentSlot extends Observable {
 
-	private SlotLabel sl;
+	private String address;
 
-	public CurrentSlot(SlotLabel sl) {
-		this.sl = sl;
-		setChanged();
-		notifyObservers();
-        addObserver(sl);
+	public CurrentSlot(String address) {
+		this.address = address;
+
 	}
 
-	public String toString() {
-		return sl.toString();
+	public String getAddress() {
+		return address;
 	}
-	
-	public void reset() {
-		sl.setBackground(Color.WHITE);
-	}
+
+
+
 
 }
