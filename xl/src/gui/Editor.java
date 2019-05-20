@@ -8,8 +8,17 @@ import java.util.Observer;
 
 import javax.swing.JTextField;
 
+import model.XLSheet;
+
 public class Editor extends JTextField implements ActionListener, Observer {
-    public Editor() {
+	
+	
+	private CurrentLabel cl;
+	private XLSheet sheet;
+	
+    public Editor(CurrentLabel cl, XLSheet sheet) {
+    	this.cl = cl;
+    	this.sheet = sheet;
         setBackground(Color.WHITE);
         addActionListener(this);
     }
@@ -17,7 +26,7 @@ public class Editor extends JTextField implements ActionListener, Observer {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

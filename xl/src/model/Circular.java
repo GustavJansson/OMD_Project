@@ -3,7 +3,7 @@ package model;
 public class Circular implements Slot{
 
 	public Circular() {
-		throw new IllegalArgumentException("Circular");
+		throw new XLException("Circular");
 	}
 	
 	@Override

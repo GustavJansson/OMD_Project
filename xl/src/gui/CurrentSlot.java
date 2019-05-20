@@ -1,9 +1,8 @@
 package gui;
 
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
+import java.util.Observable;
 
-public class CurrentSlot implements Observable {
+public class CurrentSlot  {
 	
 	private String address;
 	
@@ -15,16 +14,5 @@ public class CurrentSlot implements Observable {
 		return address;
 	}
 	
-	@Override
-	public void addListener(InvalidationListener listener) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void removeListener(InvalidationListener listener) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
