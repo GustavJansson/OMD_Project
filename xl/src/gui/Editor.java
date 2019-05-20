@@ -12,14 +12,9 @@ import model.XLSheet;
 
 public class Editor extends JTextField implements ActionListener, Observer {
 
+	XLSheet sheet = new XLSheet();
 
-	private CurrentLabel cl;
-	private XLSheet sheet;
-
-
-    public Editor(XLSheet sheet) {
-    	this.cl = cl;
-    	this.sheet = sheet;
+    public Editor() {
         setBackground(Color.WHITE);
         addActionListener(this);
 
@@ -28,8 +23,8 @@ public class Editor extends JTextField implements ActionListener, Observer {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		//works when pressing enter
-
-		System.out.println("hej");
+		System.out.println("Enter pressed " + this.getText());
+		
 	}
 
 	@Override
