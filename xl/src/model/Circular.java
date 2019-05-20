@@ -15,7 +15,7 @@ public class Circular implements Slot{
 	}
 
 	@Override
-	public String toString(Environment e) {
+	public String toString() {
 		// TODO Auto-generated method stub
 		return null;
 	}

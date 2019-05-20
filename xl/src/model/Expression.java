@@ -25,8 +25,8 @@ public class Expression implements Slot{
 	}
 	
 	@Override
-	public String toString(Environment e) {
-		return  Double.toString(getSlotData(e));
+	public String toString() {
+		return  expr.toString();
 	}
 
 }

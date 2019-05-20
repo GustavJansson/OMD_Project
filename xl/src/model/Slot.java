@@ -6,7 +6,7 @@ import expr.ExprParser;
 public interface Slot {
 	
 	public double getSlotData(Environment e);
-	public String toString(Environment e);
+	public String toString();
 	
 
 }
