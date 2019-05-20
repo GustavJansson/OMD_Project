@@ -24,6 +24,7 @@ public class XLSheet extends Observable {
 	public void add(String key, String text) {
 
 	}
+	
 
     public void clear() {
         sheet = new HashMap<String, Slot>();
