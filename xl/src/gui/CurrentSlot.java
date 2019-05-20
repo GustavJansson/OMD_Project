@@ -5,8 +5,14 @@ import javafx.beans.Observable;
 
 public class CurrentSlot implements Observable {
 	
-	public CurrentSlot() {
-		
+	private String address;
+	
+	public CurrentSlot(String address) {
+		this.address = address;
+	}
+	
+	public String getAddress() {
+		return address;
 	}
 	
 	@Override
