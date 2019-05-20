@@ -19,5 +19,12 @@ public class CurrentLabel extends ColoredLabel implements Observer{
 		setText(current.toString());
 		
 	}
+	
+	
+	public void update(String s) {
+		// TODO Auto-generated method stub
+		this.setText(s);
+		
+	}
 
 }
