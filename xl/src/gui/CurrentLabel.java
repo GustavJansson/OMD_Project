@@ -5,9 +5,9 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class CurrentLabel extends ColoredLabel implements Observer{
-	
+
 	private CurrentSlot current;
-	
+
     public CurrentLabel(CurrentSlot cs) {
         super("A1", Color.WHITE);
         current = cs;
@@ -18,7 +18,7 @@ public class CurrentLabel extends ColoredLabel implements Observer{
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 		setText(current.toString());
-		
+
 	}
 
 }

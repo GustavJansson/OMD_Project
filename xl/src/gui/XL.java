@@ -20,7 +20,7 @@ public class XL extends JFrame implements Printable {
     private XLList xlList;
 
     private XLSheet sheet;
-    
+
     public XL(XL oldXL) {
         this(oldXL.xlList, oldXL.counter);
     }
@@ -31,10 +31,10 @@ public class XL extends JFrame implements Printable {
         this.counter = counter;
         xlList.add(this);
         counter.increment();
-        
+
         sheet = new XLSheet();
         CurrentSlot currentSlot = new CurrentSlot();
-        
+
         JPanel statusPanel = new StatusPanel(statusLabel, currentSlot);
         JPanel sheetPanel = new SheetPanel(ROWS, COLUMNS, currentSlot, sheet);
         Editor editor = new Editor(sheet, currentSlot);

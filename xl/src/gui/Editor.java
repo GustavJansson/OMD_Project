@@ -12,6 +12,7 @@ import model.XLSheet;
 
 public class Editor extends JTextField implements ActionListener, Observer {
 
+	XLSheet sheet = new XLSheet();
 
 	private CurrentSlot cs;
 	private XLSheet sheet;
