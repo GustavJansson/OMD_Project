@@ -12,7 +12,7 @@ public class CurrentSlot extends Observable {
 	public CurrentSlot(String address) {
 		this.address = address;
 		this.addObserver(cl);
-		this.notifyObservers(address);
+		this.notifyObservers(this);
 		
 	}
 	
