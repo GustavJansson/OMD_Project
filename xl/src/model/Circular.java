@@ -2,6 +2,10 @@ package model;
 
 public class Circular implements Slot{
 
+	public Circular() {
+		throw new IllegalArgumentException("Circular");
+	}
+	
 	@Override
 	public String getSlotData() {
 		// TODO Auto-generated method stub
