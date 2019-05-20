@@ -11,29 +11,28 @@ import javax.swing.JTextField;
 import model.XLSheet;
 
 public class Editor extends JTextField implements ActionListener, Observer {
-
-
+	
+	
 	private CurrentLabel cl;
 	private XLSheet sheet;
-
+	
     public Editor(XLSheet sheet) {
     	this.cl = cl;
     	this.sheet = sheet;
         setBackground(Color.WHITE);
         addActionListener(this);
-
+        
     }
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		System.out.println("hej");
-
-
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-
+		
 	}
 }
