@@ -3,7 +3,7 @@ package model;
 public class Circular implements Slot{
 
 	@Override
-	public Slot getSlotData() {
+	public String getSlotData() {
 		// TODO Auto-generated method stub
 		return null;
 	}
