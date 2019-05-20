@@ -1,10 +1,21 @@
 package model;
 
-import expr.Expr;
+import java.io.IOException;
+
+import expr.*;
 
 public class Expression implements Slot{
 	
 	private Expr expr;
+	
+	public Expression(String s) {
+		ExprParser parser = new ExprParser();
+		try {
+			expr = parser.build(s);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	@Override
 	public String getSlotData() {
@@ -14,7 +25,12 @@ public class Expression implements Slot{
 
 	@Override
 	public void setSlotData(String s) {
-		// TODO Auto-generated method stub
+       ExprParser parser = new ExprParser();
+        try {
+			expr = parser.build(s);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
