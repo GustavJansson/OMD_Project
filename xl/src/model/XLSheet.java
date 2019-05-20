@@ -37,9 +37,10 @@ public class XLSheet extends Observable {
 				sheet.put(key, val);
 		}
 	}
-	private void remove(String key) {
+	public void remove(String key) {
 		sheet.remove(key);
 	}
+	
 
     public void clear() {
         sheet = new HashMap<String, Slot>();
