@@ -7,6 +7,8 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class SlotLabel extends ColoredLabel implements Observer, MouseListener{
+	private CurrentLabel cl;
+	
     public SlotLabel() {
         super("                    ", Color.WHITE, RIGHT);
         addMouseListener(this);
@@ -15,7 +17,6 @@ public class SlotLabel extends ColoredLabel implements Observer, MouseListener{
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		
 		this.setText((String)arg);
 	}
 
@@ -28,12 +29,18 @@ public class SlotLabel extends ColoredLabel implements Observer, MouseListener{
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
+		if(this.getBackground() != Color.yellow) {
+			this.setBackground(Color.LIGHT_GRAY);
+		}
+		
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+		if(this.getBackground() != Color.yellow) {
+			this.setBackground(Color.WHITE);
+		}
 		
 	}
 
