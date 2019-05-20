@@ -1,11 +1,11 @@
 package model;
 
 import java.util.HashMap;
+import java.util.Observable;
 
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 
-public class XLSheet implements Observable {
+
+public class XLSheet extends Observable {
 	
 	private HashMap<String, Slot> sheet = new HashMap<String, Slot>();
 	
@@ -16,18 +16,6 @@ public class XLSheet implements Observable {
 	
 	public void modify(String string, Slot slot) {
 		sheet.put(string, slot);
-	}
-
-	@Override
-	public void addListener(InvalidationListener listener) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void removeListener(InvalidationListener listener) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
