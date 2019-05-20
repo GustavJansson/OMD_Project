@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Color;
+import java.util.Observable;
 import java.util.Observer;
 
 public class CurrentLabel extends ColoredLabel implements Observer{
@@ -14,16 +15,9 @@ public class CurrentLabel extends ColoredLabel implements Observer{
     }
 
 	@Override
-	public void update(java.util.Observable o, Object arg) {
+	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 		setText(current.toString());
-		
-	}
-	
-	
-	public void update(String s) {
-		// TODO Auto-generated method stub
-		this.setText(s);
 		
 	}
 

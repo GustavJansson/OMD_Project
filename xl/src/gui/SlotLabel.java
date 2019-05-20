@@ -6,14 +6,26 @@ import java.awt.event.MouseListener;
 import java.util.Observable;
 import java.util.Observer;
 
+import model.XLSheet;
+
 public class SlotLabel extends ColoredLabel implements Observer, MouseListener{
-	private CurrentLabel cl;
+	private CurrentSlot slot;
+	private String position;
+	private XLSheet sheet;
 	
-    public SlotLabel() {
+    public SlotLabel(CurrentSlot slot, XLSheet sheet, String position) {
         super("                    ", Color.WHITE, RIGHT);
         addMouseListener(this);
+        this.slot = slot;
+        this.sheet = sheet;
+        this.position = position;
+        sheet.addObserver(this);
     }
 
+    public String toString() {
+    	return position;
+    }
+    
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
@@ -23,7 +35,7 @@ public class SlotLabel extends ColoredLabel implements Observer, MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		this.setBackground(Color.YELLOW);
+		
 	}
 
 	@Override
@@ -47,7 +59,9 @@ public class SlotLabel extends ColoredLabel implements Observer, MouseListener{
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+	//	slot.reset();
+		this.setBackground(Color.YELLOW);
+		slot.set(this);
 	}
 
 	@Override

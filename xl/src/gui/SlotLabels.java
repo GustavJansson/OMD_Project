@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.SwingConstants;
 
+import model.XLSheet;
+
 public class SlotLabels extends GridPanel {
     private List<SlotLabel> labelList;
 
-    public SlotLabels(int rows, int cols) {
+    public SlotLabels(int rows, int cols, CurrentSlot slot, XLSheet sheet) {
         super(rows + 1, cols);
         labelList = new ArrayList<SlotLabel>(rows * cols);
         for (char ch = 'A'; ch < 'A' + cols; ch++) {
@@ -17,7 +19,8 @@ public class SlotLabels extends GridPanel {
         }
         for (int row = 1; row <= rows; row++) {
             for (char ch = 'A'; ch < 'A' + cols; ch++) {
-                SlotLabel label = new SlotLabel();
+            	String position = ch+ Integer.toString(row);
+                SlotLabel label = new SlotLabel(slot, sheet, position);
                 add(label);
                 labelList.add(label);
             }

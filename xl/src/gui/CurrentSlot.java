@@ -10,10 +10,9 @@ public class CurrentSlot extends Observable {
 	
 	public void set(SlotLabel sl) {
 		current = sl;
-		
 		setChanged();
         notifyObservers();
-        this.addObserver(sl);
+        addObserver(sl);
 	}
 
 	public void reset() {
