@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.util.*;
 
 public class CurrentSlot extends Observable {
@@ -14,10 +15,9 @@ public class CurrentSlot extends Observable {
 		this.notifyObservers(address);
 		
 	}
-
-	public CurrentSlot(String address) {
-		this.address = address;
-
+	
+	public CurrentSlot(SlotLabel sl) {
+		this.sl = sl;
 	}
 
 	public void reset() {
