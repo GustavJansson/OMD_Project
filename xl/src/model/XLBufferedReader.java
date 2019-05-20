@@ -13,7 +13,7 @@ public class XLBufferedReader extends BufferedReader {
     }
 
     // TODO Change Object to something appropriate
-    public void load(Map<String, Object> map) {
+    public void load(Map<String, Slot> map) {
         try {
             while (ready()) {
                 String string = readLine();
@@ -21,7 +21,8 @@ public class XLBufferedReader extends BufferedReader {
                 // TODO
                 
                 String key = string.substring(0, i-1);
-                Object value = string.substring(i+1,string.length()-1);
+                Slot value = null;
+                value.setSlotData(string.substring(i+1,string.length()-1));
                 map.put(key, value);
               
             }
