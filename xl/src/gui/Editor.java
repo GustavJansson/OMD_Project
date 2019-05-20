@@ -25,7 +25,8 @@ public class Editor extends JTextField implements ActionListener, Observer {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+		System.out.println("hej");
+		
 
 	}
 
