@@ -4,14 +4,19 @@ import java.awt.Color;
 import java.util.Observer;
 
 public class CurrentLabel extends ColoredLabel implements Observer{
-    public CurrentLabel() {
+	
+	private CurrentSlot current;
+	
+    public CurrentLabel(CurrentSlot cs) {
         super("A1", Color.WHITE);
+        current = cs;
+        cs.addObserver(this);
     }
 
 	@Override
 	public void update(java.util.Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		this.setText((String)arg);
+		setText(current.toString());
 		
 	}
 

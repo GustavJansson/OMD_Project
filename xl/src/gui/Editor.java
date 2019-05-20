@@ -13,28 +13,28 @@ import model.XLSheet;
 public class Editor extends JTextField implements ActionListener, Observer {
 
 
-	private CurrentLabel cl;
+	private CurrentSlot cs;
 	private XLSheet sheet;
 
 
-    public Editor(XLSheet sheet) {
-    	this.cl = cl;
+    public Editor(XLSheet sheet, CurrentSlot cs) {
+    	this.cs = cs;
     	this.sheet = sheet;
         setBackground(Color.WHITE);
         addActionListener(this);
+        cs.addObserver(this);
 
     }
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		//works when pressing enter
-
 		System.out.println("hej");
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		setBackground(Color.YELLOW);
+		//setBackground(Color.YELLOW);
 	}
 }

@@ -5,22 +5,21 @@ import java.util.*;
 
 public class CurrentSlot extends Observable {
 
-	private String address;
-	private CurrentLabel cl;
-	private SlotLabel sl;
+	private SlotLabel current;
 
-	public CurrentSlot(String address) {
-		this.address = address;
-		this.addObserver(cl);
-		this.notifyObservers(this);
-		
-	}
 	
-	public CurrentSlot(SlotLabel sl) {
-		this.sl = sl;
+	public void set(SlotLabel sl) {
+		current = sl;
+		
+		setChanged();
+        notifyObservers();
+        this.addObserver(sl);
 	}
 
 	public void reset() {
-		sl.setBackground(Color.WHITE);
+		current.setBackground(Color.WHITE);
+	}
+	public String toString() {
+		return current.toString();
 	}
 }
