@@ -41,4 +41,9 @@ public class XLSheet extends Observable {
 		sheet.remove(key);
 	}
 
+    public void clear() {
+        sheet = new HashMap<String, Slot>();
+        setChanged();
+        notifyObservers();
+    }
 }
