@@ -8,30 +8,25 @@ public class Expression implements Slot{
 	
 	private Expr expr;
 	
-	public Expression(String s) {
+	public Expression(Expr expr) {
+		this.expr = expr;
+	}
+	/*
+	public Expression(String expr) throws IOException {
 		ExprParser parser = new ExprParser();
-		try {
-			expr = parser.build(s);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		this.expr = parser.build(expr);
 	}
+	*/
 
 	@Override
-	public String getSlotData() {
+	public double getSlotData(Environment e) {
 		// TODO Auto-generated method stub
-		return expr.toString();
+		return expr.value(e);
 	}
-
+	
 	@Override
-	public void setSlotData(String s) {
-       ExprParser parser = new ExprParser();
-        try {
-			expr = parser.build(s);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
+	public String toString(Environment e) {
+		return  Double.toString(getSlotData(e));
 	}
 
 }

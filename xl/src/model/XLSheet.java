@@ -10,7 +10,6 @@ import gui.CurrentLabel;
 public class XLSheet extends Observable {
 
 	private HashMap<String, Slot> sheet;
-
 	CurrentLabel cl;
 
 	public XLSheet() {
@@ -32,10 +31,12 @@ public class XLSheet extends Observable {
 				val = new Comment(value);
 			}
 			else {
-				val = new Expression(text);
+				val = SlotCreator.toSlot(text);
 			}
 				sheet.put(key, val);
 		}
+		setChanged();
+		notifyObservers();
 	}
 	public void remove(String key) {
 		sheet.remove(key);
@@ -46,5 +47,12 @@ public class XLSheet extends Observable {
         sheet = new HashMap<String, Slot>();
         setChanged();
         notifyObservers();
+    }
+    
+    public String print(String key) {
+    	if (sheet.containsKey(key)) {
+    		return sheet.get(key).toString();
+    	}
+    	return "";
     }
 }

@@ -29,7 +29,7 @@ public class SlotLabel extends ColoredLabel implements Observer, MouseListener{
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		this.setText((String)arg);
+		this.setText(slot.toString());
 	}
 
 	@Override

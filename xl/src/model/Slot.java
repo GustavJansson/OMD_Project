@@ -1,8 +1,12 @@
 package model;
 
+import expr.Environment;
+import expr.ExprParser;
+
 public interface Slot {
 	
-	public String getSlotData();
-	public void setSlotData(String s);
+	public double getSlotData(Environment e);
+	public String toString(Environment e);
+	
 
 }

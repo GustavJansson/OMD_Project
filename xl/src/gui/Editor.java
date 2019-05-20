@@ -29,12 +29,18 @@ public class Editor extends JTextField implements ActionListener, Observer {
 	public void actionPerformed(ActionEvent arg0) {
 		//works when pressing enter
 		System.out.println("hej");
-		String key = this.getText();
+		String value = this.getText();
+		String key = cs.toString();
+		sheet.add(key, value);
+
+        
+		
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 		//setBackground(Color.YELLOW);
+		setText(sheet.print(cs.toString()));
 	}
 }
