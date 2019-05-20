@@ -22,7 +22,23 @@ public class XLSheet extends Observable {
 		notifyObservers(string);
 	}
 	public void add(String key, String text) {
-
+		if (text.length()>0){
+			if (sheet.containsKey(key)) {
+				remove(key);
+			}
+			Slot val;
+			if (text.charAt(0)=='#') {
+				String value = text.substring(1);
+				val = new Comment(value);
+			}
+			else {
+				val = new Expression(text);
+			}
+				sheet.put(key, val);
+		}
+	}
+	private void remove(String key) {
+		sheet.remove(key);
 	}
 
 }
