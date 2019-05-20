@@ -15,6 +15,7 @@ public class Editor extends JTextField implements ActionListener, Observer {
 
 	private CurrentLabel cl;
 	private XLSheet sheet;
+	
 
     public Editor(XLSheet sheet) {
     	this.cl = cl;
@@ -26,8 +27,8 @@ public class Editor extends JTextField implements ActionListener, Observer {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		System.out.println("hej");
-
+		//works when pressing enter
+		
 
 	}
 

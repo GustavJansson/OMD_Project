@@ -7,11 +7,14 @@ public class CurrentSlot extends Observable {
 
 	private String address;
 	private CurrentLabel cl;
+	private SlotLabel sl;
 
 	public CurrentSlot(String address) {
 		this.address = address;
 		this.addObserver(cl);
 		this.notifyObservers(address);
+		
+	}
 
 	public CurrentSlot(SlotLabel sl) {
 		this.sl = sl;
