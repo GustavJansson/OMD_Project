@@ -10,14 +10,13 @@ public class Circular implements Slot{
 
 	@Override
 	public double getSlotData(Environment e) {
-		// TODO Auto-generated method stub
-		return 0;
+		throw new XLException("Circular dependency");
 	}
 
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		throw new XLException("Unprintable");
 	}
 	
 
