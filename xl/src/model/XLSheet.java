@@ -14,9 +14,11 @@ import expr.Environment;
 public class XLSheet extends Observable implements Environment {
 
 	private HashMap<String, Slot> sheet;
+	private String error;
 
 	public XLSheet() {
 		sheet = new HashMap<String, Slot>();
+		error="";
 	}
 
 	public void add(String key, String text) {
@@ -32,8 +34,7 @@ public class XLSheet extends Observable implements Environment {
 			}	
 			
 			else {
-//						throw new XLException("Fel inmatning i: "+key);
-				JOptionPane.showMessageDialog(null, "Felaktig inmatning i ruta "+key);
+				error = "Felaktig inmatning i ruta: "+key;
 			}		
 		setChanged();
 		notifyObservers();
@@ -52,7 +53,12 @@ public class XLSheet extends Observable implements Environment {
     
     public String print(String key) {
     	if (sheet.containsKey(key)) {
-    		return sheet.get(key).calc(this);
+    		try {
+    			return sheet.get(key).calc(this);
+    		}
+    		catch(XLException e) {
+    			return "Fel";
+    		}
     	}
     	return "";
     }
@@ -64,7 +70,15 @@ public class XLSheet extends Observable implements Environment {
     	Map<String, Slot> temp = new HashMap<String, Slot>();
     	
     	for (Entry<String, Slot> entry : map.entrySet()) {
-    			temp.put(entry.getKey(), entry.getValue());
+    			
+    			String key = entry.getKey();
+    			String value = entry.getKey();
+    			if (checkCircular(key, SlotCreator.toSlot(value))) {
+    				error="Kan inte läsa in filen!";
+    			}
+    			else {
+    				temp.put(entry.getKey(), entry.getValue());
+    			}
     	}
     	
         sheet = (HashMap<String, Slot>) temp;
@@ -89,12 +103,13 @@ public class XLSheet extends Observable implements Environment {
     		value.getSlotData(this);
     	}
     	catch (XLException e) {
-    		return true;
-    	}
-    	catch (NullPointerException e) {
+    		error="fel";
     		return true;
     	}
     	return false;
+    }
+    public String error() {
+    	return error;
     }
     
 }

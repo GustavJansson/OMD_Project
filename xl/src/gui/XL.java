@@ -22,7 +22,7 @@ import javax.swing.JPanel;
 public class XL extends JFrame implements Printable {
     private static final int ROWS = 10, COLUMNS = 8;
     private XLCounter counter;
-    private StatusLabel statusLabel = new StatusLabel();
+    private StatusLabel statusLabel;
     private XLList xlList;
 
     private XLSheet sheet;
@@ -40,6 +40,7 @@ public class XL extends JFrame implements Printable {
 
         sheet = new XLSheet();
         CurrentSlot currentSlot = new CurrentSlot();
+        statusLabel  = new StatusLabel(sheet);
 
         JPanel statusPanel = new StatusPanel(statusLabel, currentSlot);
         JPanel sheetPanel = new SheetPanel(ROWS, COLUMNS, currentSlot, sheet);
