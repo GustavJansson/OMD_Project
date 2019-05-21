@@ -20,8 +20,8 @@ public class XLBufferedReader extends BufferedReader {
                 int i = string.indexOf('=');
                 // TODO
                 
-                String key = string.substring(0, i-1);
-                String value = string.substring(i+1, string.length()-1);
+                String key = string.substring(0, i);
+                String value = string.substring(i+1, string.length());
                 
                 map.put(key, SlotCreator.toSlot(value));
               

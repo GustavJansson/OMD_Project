@@ -1,7 +1,11 @@
 package model;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Observable;
+import java.util.Set;
+import java.util.Map.Entry;
 
 import gui.CurrentLabel;
 
@@ -60,4 +64,15 @@ public class XLSheet extends Observable {
     	}
     	return "";
     }
+    
+    public Set<Entry<String, Slot>> toSet() {
+    	return sheet.entrySet();
+    }
+    public void load(Map<String, Slot> map) {
+    	sheet.clear();
+        sheet = (HashMap<String, Slot>) map;
+     	setChanged();
+     	notifyObservers();
+    }
+    
 }
