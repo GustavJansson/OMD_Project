@@ -12,7 +12,7 @@ public class CurrentSlot extends Observable {
 		current = sl;
 		setChanged();
         notifyObservers();
-        addObserver(sl);
+        addObserver(current);
 	}
 
 	public void reset() {
