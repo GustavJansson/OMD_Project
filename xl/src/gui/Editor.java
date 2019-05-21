@@ -28,7 +28,6 @@ public class Editor extends JTextField implements ActionListener, Observer {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		//works when pressing enter
-		System.out.println("hej");
 		String value = this.getText();
 		String key = cs.toString();
 		System.out.println(value);
