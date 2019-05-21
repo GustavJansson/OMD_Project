@@ -55,7 +55,7 @@ public class XLSheet extends Observable implements Environment {
     
     public String print(String key) {
     	if (sheet.containsKey(key)) {
-    		return sheet.get(key).toString();
+    		return sheet.get(key).calc(this);
     	}
     	return "";
     }
