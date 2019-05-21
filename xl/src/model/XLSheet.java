@@ -23,6 +23,7 @@ public class XLSheet extends Observable implements Environment {
 		sheet.put(string, slot);
 		notifyObservers(string);
 	}
+	
 	public void add(String key, String text) {
 			if (sheet.containsKey(key)) {
 				remove(key);
@@ -67,13 +68,9 @@ public class XLSheet extends Observable implements Environment {
     	Map<String, Slot> temp = new HashMap<String, Slot>();
     	
     	for (Entry<String, Slot> entry : map.entrySet()) {
-    		if (checkCircular(entry.getKey(), entry.getValue())) {
-    			throw new XLException("Circular");
-    		}
-    		else {
     			temp.put(entry.getKey(), entry.getValue());
-    		}
     	}
+    	
         sheet = (HashMap<String, Slot>) temp;
      	setChanged();
      	notifyObservers();
@@ -90,20 +87,17 @@ public class XLSheet extends Observable implements Environment {
     
     
     private boolean checkCircular(String key, Slot value) {
-    	Slot currentSlot = sheet.get(key);
-    	
+ 
     	sheet.put(key, new Circular());
-    	
     	try {
     		value.getSlotData(this);
     	}
     	catch (XLException e) {
-    	return true;
+    		return true;
     	}
     	catch (NullPointerException e) {
-    	return true;
+    		return true;
     	}
-    	sheet.put(key, currentSlot);
     	return false;
     }
     
