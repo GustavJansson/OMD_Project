@@ -3,6 +3,8 @@ package model;
 import java.util.HashMap;
 import java.util.Observable;
 
+import javax.swing.JOptionPane;
+
 import gui.CurrentLabel;
 
 
@@ -37,7 +39,8 @@ public class XLSheet extends Observable {
 						sheet.put(key, val);
 					}
 					else {
-						throw new XLException("Fel inmatning i: "+key);
+//						throw new XLException("Fel inmatning i: "+key);
+						JOptionPane.showMessageDialog(null, "Felaktig inmatning i ruta "+key);
 					}
 		}
 		setChanged();
