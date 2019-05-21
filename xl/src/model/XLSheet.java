@@ -9,11 +9,12 @@ import java.util.Map.Entry;
 
 import javax.swing.JOptionPane;
 
+import expr.Environment;
 import gui.CurrentLabel;
 
 
 
-public class XLSheet extends Observable {
+public class XLSheet extends Observable implements Environment {
 
 	private HashMap<String, Slot> sheet;
 	CurrentLabel cl;
@@ -72,6 +73,15 @@ public class XLSheet extends Observable {
      	setChanged();
      	notifyObservers();
     }
+
+	@Override
+	public double value(String name) {
+		// TODO Auto-generated method stub
+		if (sheet.containsKey(name)) return sheet.get(name).getSlotData(this);
+		else {
+			throw new XLException("Denna plats finns ej");
+		}
+	}
     
     
 }
