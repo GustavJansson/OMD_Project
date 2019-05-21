@@ -29,21 +29,21 @@ public class XLSheet extends Observable implements Environment {
 		notifyObservers(string);
 	}
 	public void add(String key, String text) {
-		if (text.length()>0){
 			if (sheet.containsKey(key)) {
 				remove(key);
 			}
 			Slot val;
 				val = SlotCreator.toSlot(text);
+				
+
+			if (!checkCircular(key, val)) {
+				sheet.put(key, val);
+			}	
 			
-					if (val != null) {
-						sheet.put(key, val);
-					}
-					else {
+			else {
 //						throw new XLException("Fel inmatning i: "+key);
-						JOptionPane.showMessageDialog(null, "Felaktig inmatning i ruta "+key);
-					}
-		}
+				JOptionPane.showMessageDialog(null, "Felaktig inmatning i ruta "+key);
+			}		
 		setChanged();
 		notifyObservers();
 	}

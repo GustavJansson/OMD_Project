@@ -5,18 +5,18 @@ import expr.Environment;
 public class Circular implements Slot{
 
 	public Circular() {
-		throw new XLException("Circular");
+	//	throw new XLException("Circular");
 	}
 
 	@Override
 	public double getSlotData(Environment e) {
-		throw new XLException("Circular dependency");
+		throw new XLException("Circular");
 	}
 
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		throw new XLException("Unprintable");
+		throw new XLException("Ruta saknar värde");
 	}
 	
 
