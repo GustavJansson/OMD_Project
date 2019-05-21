@@ -4,12 +4,18 @@ import static java.awt.BorderLayout.CENTER;
 import static java.awt.BorderLayout.NORTH;
 import static java.awt.BorderLayout.SOUTH;
 import gui.menu.XLMenuBar;
+import model.Slot;
 import model.XLSheet;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
+import java.util.Set;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -62,6 +68,14 @@ public class XL extends JFrame implements Printable {
         xlList.setChanged();
     }
 
+    public Set<Entry<String, Slot>> data(){
+    	return sheet.toSet();
+    }
+    
+    public void setXL(Map<String, Slot> map) {
+    	sheet.load(map);
+    }
+    
     public static void main(String[] args) {
         new XL(new XLList(), new XLCounter());
     }
