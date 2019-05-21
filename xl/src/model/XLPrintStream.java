@@ -8,7 +8,7 @@ import java.util.Set;
 //TODO move to another package
 public class XLPrintStream extends PrintStream {
     public XLPrintStream(String fileName) throws FileNotFoundException {
-        super(fileName);
+        super(fileName+".xl");
     }
 
     // TODO Change Object to something appropriate
