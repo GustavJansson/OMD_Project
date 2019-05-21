@@ -31,8 +31,10 @@ public class Editor extends JTextField implements ActionListener, Observer {
 		System.out.println("hej");
 		String value = this.getText();
 		String key = cs.toString();
-		System.out.println(value);
-		sheet.add(key, value);
+		if (!value.equals("")) {
+			sheet.add(key, value);
+		}
+		
 
         
 		
