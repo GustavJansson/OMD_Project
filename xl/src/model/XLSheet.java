@@ -7,11 +7,14 @@ import java.util.Observable;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import javax.swing.JOptionPane;
+
+import expr.Environment;
 import gui.CurrentLabel;
 
 
 
-public class XLSheet extends Observable {
+public class XLSheet extends Observable implements Environment {
 
 	private HashMap<String, Slot> sheet;
 	CurrentLabel cl;
@@ -31,18 +34,14 @@ public class XLSheet extends Observable {
 				remove(key);
 			}
 			Slot val;
-			if (text.charAt(0)=='#') {
-				String value = text.substring(1);
-				val = new Comment(value);
-			}
-			else {
 				val = SlotCreator.toSlot(text);
-			}
+			
 					if (val != null) {
 						sheet.put(key, val);
 					}
 					else {
-						throw new XLException("Fel inmatning i: "+key);
+//						throw new XLException("Fel inmatning i: "+key);
+						JOptionPane.showMessageDialog(null, "Felaktig inmatning i ruta "+key);
 					}
 		}
 		setChanged();
@@ -75,6 +74,16 @@ public class XLSheet extends Observable {
      	setChanged();
      	notifyObservers();
     }
+
+	@Override
+	public double value(String name) {
+		// TODO Auto-generated method stub
+		if (sheet.containsKey(name)) return sheet.get(name).getSlotData(this);
+		else {
+			throw new XLException("Denna plats finns ej");
+		}
+	}
+    
     
     private boolean checkCircular(String key, Slot value) {
     	Slot currentSlot = sheet.get(key);

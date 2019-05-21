@@ -31,11 +31,12 @@ class LoadMenuItem extends OpenMenuItem {
     	catch (FileNotFoundException e) {
     		statusLabel.setText(e.getMessage());
     	}
-    	
+    	/*
     	Set<Map.Entry<String, Slot>> set = xl.data();
         for (Map.Entry<String, Slot> entry : set) {
             sheet.put(entry.getKey(), entry.getValue());
         }
+        */
     	
     	 read.load(sheet);
     	 xl.setXL(sheet);
