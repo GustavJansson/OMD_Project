@@ -30,13 +30,8 @@ public class XLSheet extends Observable {
 				remove(key);
 			}
 			Slot val;
-			if (text.charAt(0)=='#') {
-				String value = text.substring(1);
-				val = new Comment(value);
-			}
-			else {
 				val = SlotCreator.toSlot(text);
-			}
+			
 					if (val != null) {
 						sheet.put(key, val);
 					}
