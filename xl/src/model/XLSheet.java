@@ -69,8 +69,17 @@ public class XLSheet extends Observable implements Environment {
     	return sheet.entrySet();
     }
     public void load(Map<String, Slot> map) {
-    	sheet.clear();
-        sheet = (HashMap<String, Slot>) map;
+    	Map<String, Slot> temp = new HashMap<String, Slot>();
+    	
+    	for (Entry<String, Slot> entry : map.entrySet()) {
+    		if (checkCircular(entry.getKey(), entry.getValue())) {
+    			throw new XLException("Circular");
+    		}
+    		else {
+    			temp.put(entry.getKey(), entry.getValue());
+    		}
+    	}
+        sheet = (HashMap<String, Slot>) temp;
      	setChanged();
      	notifyObservers();
     }
