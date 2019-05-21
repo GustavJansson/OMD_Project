@@ -10,15 +10,10 @@ import java.util.Map.Entry;
 import javax.swing.JOptionPane;
 
 import expr.Environment;
-import gui.CurrentLabel;
-
-
 
 public class XLSheet extends Observable implements Environment {
 
 	private HashMap<String, Slot> sheet;
-	CurrentLabel cl;
-	private String error = "", errorkey = "";
 
 	public XLSheet() {
 		sheet = new HashMap<String, Slot>();
@@ -103,11 +98,9 @@ public class XLSheet extends Observable implements Environment {
     		value.getSlotData(this);
     	}
     	catch (XLException e) {
-    	error = "Incorrect input";
     	return true;
     	}
     	catch (NullPointerException e) {
-    	error = "Incorrect input";
     	return true;
     	}
     	sheet.put(key, currentSlot);

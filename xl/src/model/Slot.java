@@ -7,6 +7,6 @@ public interface Slot {
 	
 	public double getSlotData(Environment e);
 	public String toString();
-	
+	public String calc(Environment e);
 
 }

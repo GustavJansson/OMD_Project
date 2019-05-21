@@ -20,4 +20,10 @@ public class Comment implements Slot{
 		return comment;
 	}
 
+	@Override
+	public String calc(Environment e) {
+		// TODO Auto-generated method stub
+		return comment;
+	}
+
 }

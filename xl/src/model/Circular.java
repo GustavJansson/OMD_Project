@@ -18,6 +18,12 @@ public class Circular implements Slot{
 		// TODO Auto-generated method stub
 		throw new XLException("Ruta saknar värde");
 	}
+
+	@Override
+	public String calc(Environment e) {
+		// TODO Auto-generated method stub
+		throw new XLException("Ruta saknar värde");
+	}
 	
 
 
