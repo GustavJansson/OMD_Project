@@ -33,7 +33,12 @@ public class XLSheet extends Observable {
 			else {
 				val = SlotCreator.toSlot(text);
 			}
-				sheet.put(key, val);
+					if (val != null) {
+						sheet.put(key, val);
+					}
+					else {
+						throw new XLException("Fel inmatning i: "+key);
+					}
 		}
 		setChanged();
 		notifyObservers();
