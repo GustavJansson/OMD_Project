@@ -19,11 +19,6 @@ public class XLSheet extends Observable implements Environment {
 		sheet = new HashMap<String, Slot>();
 	}
 
-	public void modify(String string, Slot slot) {
-		sheet.put(string, slot);
-		notifyObservers(string);
-	}
-	
 	public void add(String key, String text) {
 			if (sheet.containsKey(key)) {
 				remove(key);
@@ -43,6 +38,7 @@ public class XLSheet extends Observable implements Environment {
 		setChanged();
 		notifyObservers();
 	}
+	
 	public void remove(String key) {
 		sheet.remove(key);
 	}
