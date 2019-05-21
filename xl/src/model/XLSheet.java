@@ -15,6 +15,7 @@ public class XLSheet extends Observable {
 
 	private HashMap<String, Slot> sheet;
 	CurrentLabel cl;
+	private String error = "", errorkey = "";
 
 	public XLSheet() {
 		sheet = new HashMap<String, Slot>();
@@ -73,6 +74,26 @@ public class XLSheet extends Observable {
         sheet = (HashMap<String, Slot>) map;
      	setChanged();
      	notifyObservers();
+    }
+    
+    private boolean checkCircular(String key, Slot value) {
+    	Slot currentSlot = sheet.get(key);
+    	
+    	sheet.put(key, new Circular());
+    	
+    	try {
+    		value.getSlotData(this);
+    	}
+    	catch (XLException e) {
+    	error = "Incorrect input";
+    	return true;
+    	}
+    	catch (NullPointerException e) {
+    	error = "Incorrect input";
+    	return true;
+    	}
+    	sheet.put(key, currentSlot);
+    	return false;
     }
     
 }
