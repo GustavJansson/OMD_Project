@@ -7,6 +7,8 @@ import java.util.Observable;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import javax.swing.JOptionPane;
+
 import gui.CurrentLabel;
 
 
@@ -36,7 +38,8 @@ public class XLSheet extends Observable {
 						sheet.put(key, val);
 					}
 					else {
-						throw new XLException("Fel inmatning i: "+key);
+//						throw new XLException("Fel inmatning i: "+key);
+						JOptionPane.showMessageDialog(null, "Felaktig inmatning i ruta "+key);
 					}
 		}
 		setChanged();
