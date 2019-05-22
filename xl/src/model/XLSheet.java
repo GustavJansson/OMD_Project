@@ -65,7 +65,7 @@ public class XLSheet extends Observable implements Environment {
     	return "";
     }
     
-    public String printExpr(String key) {
+    public String printSlot(String key) {
     	if (sheet.containsKey(key)) {
     		try {
     			return sheet.get(key).toString();
@@ -131,7 +131,6 @@ public class XLSheet extends Observable implements Environment {
 			error = "fel";
 			circular = true;
 		}
-    	System.out.println(key + " "+circular);
     	return circular; 
     }
     
