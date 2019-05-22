@@ -12,6 +12,7 @@ import java.awt.Graphics2D;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.util.Set;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -73,8 +74,8 @@ public class XL extends JFrame implements Printable {
     	return sheet.toSet();
     }
     
-    public void setXL(Map<String, Slot> map) {
-    	sheet.load(map);
+    public void setXL(HashMap<String, Slot> map) {
+    	sheet.load((HashMap<String, Slot>) map);
     }
     
     public static void main(String[] args) {

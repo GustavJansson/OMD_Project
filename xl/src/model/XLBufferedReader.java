@@ -22,8 +22,8 @@ public class XLBufferedReader extends BufferedReader {
                 
                 String key = string.substring(0, i);
                 String value = string.substring(i+1, string.length());
-                
                 map.put(key, SlotCreator.toSlot(value));
+                
               
             }
         } catch (Exception e) {
