@@ -40,7 +40,7 @@ public class XL extends JFrame implements Printable {
 
         sheet = new XLSheet();
         CurrentSlot currentSlot = new CurrentSlot();
-        statusLabel = new StatusLabel(sheet);
+        statusLabel = new StatusLabel(currentSlot);
 
         JPanel statusPanel = new StatusPanel(statusLabel, currentSlot);
         JPanel sheetPanel = new SheetPanel(ROWS, COLUMNS, currentSlot, sheet);

@@ -19,7 +19,8 @@ public class SlotCreator {
 				expr = new Expression(parser.build(s));
 				return expr;
 				
-			} catch (Exception e) {
+			} catch (XLException e) {
+			//	System.out.println(e.getMessage());
 				throw e;
 			}
 			

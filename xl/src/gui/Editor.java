@@ -35,11 +35,11 @@ public class Editor extends JTextField implements ActionListener, Observer {
 
 		try {
 			sheet.add(key, value);
-			sl.setString(value);
 		} catch (XLException e) {
 		//	throw e;
 			sl.setString(e.getMessage());
-		}   
+			 System.out.println(e.getMessage());
+		}  
 		
 	}
 

@@ -104,9 +104,7 @@ public class XLSheet extends Observable implements Environment {
     	catch (XLException e) {
     		throw new XLException("Fel in data");
     	}
-    	catch (NullPointerException e) {
-    		throw e;
-    	}
+
     	return false;
     }
     

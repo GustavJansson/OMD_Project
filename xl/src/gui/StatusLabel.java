@@ -8,22 +8,22 @@ import model.XLException;
 import model.XLSheet;
 
 public class StatusLabel extends ColoredLabel implements Observer {
-	private XLSheet sheet;
+	private CurrentSlot cs;
 	private String message;
 	
-    public StatusLabel(XLSheet sheet) {
+    public StatusLabel(CurrentSlot cs) {
         super("", Color.WHITE);
-        this.sheet = sheet;
-        sheet.addObserver(this);
+        this.cs = cs;
+        cs.addObserver(this);
         message = "";
         
     }
 
     public void update(Observable observable, Object object) {
-        setText(message);
+        setText("");
 
     }
     public void setString(String text) {
-    	message = text;
+    	setText(text);
     }
 }
