@@ -6,6 +6,7 @@ import java.awt.event.MouseListener;
 import java.util.Observable;
 import java.util.Observer;
 
+import model.XLException;
 import model.XLSheet;
 
 public class SlotLabel extends ColoredLabel implements Observer, MouseListener{
@@ -30,8 +31,12 @@ public class SlotLabel extends ColoredLabel implements Observer, MouseListener{
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 		//Vad som visas i rutan
-
-		this.setText(sheet.print(position));
+		try {
+			this.setText(sheet.print(position));
+		}
+		catch(XLException e) {
+			setText("FEL!");
+		}
 	}
 
 	@Override

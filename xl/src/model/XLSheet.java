@@ -21,8 +21,9 @@ public class XLSheet extends Observable implements Environment {
 	}
 
 	public void add(String key, String text) {
+		Slot oldValue;
 			if (sheet.containsKey(key)) {
-				remove(key);
+				oldValue = sheet.get(key);
 			}
 				
 				try {
@@ -59,16 +60,31 @@ public class XLSheet extends Observable implements Environment {
     }
     
     public String print(String key) {
+    	Slot value = sheet.get(key);
+    	if (value == null) {
+    		return "";
+    	}
+    		try {	
+    			return value.calc(this);
+    		}
+    		catch(XLException e) {
+    			throw e;
+    		}
+    }
+    
+    public String printSlot(String key) {
     	if (sheet.containsKey(key)) {
     		try {
-    			return sheet.get(key).calc(this);
+    			return sheet.get(key).toString();
     		}
     		catch(XLException e) {
     			throw e;
     		}
     	}
     	return "";
+    	
     }
+    
     
     public Set<Entry<String, Slot>> toSet() {
     	return sheet.entrySet();
@@ -88,15 +104,17 @@ public class XLSheet extends Observable implements Environment {
 	@Override
 	public double value(String name) {
 		// TODO Auto-generated method stub
-		if (!sheet.containsKey(name)) {
-            throw new XLException(name + " saknar värde");
-        }
-        return sheet.get(name).getSlotData(this);
+		try {
+			return sheet.get(name).getSlotData(this);
+		}
+		catch (Exception e) {
+			throw e;
+		}
 	}
     
     
     private boolean checkCircular(String key, Slot value) {
- 
+    	Slot oldVal = sheet.get(key);
     	sheet.put(key, new Circular());
     	try {
     		value.getSlotData(this);
@@ -104,7 +122,7 @@ public class XLSheet extends Observable implements Environment {
     	catch (XLException e) {
     		throw e;
     	}
-
+    	sheet.put(key, oldVal);
     	return false;
     }
     

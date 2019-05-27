@@ -46,6 +46,11 @@ public class Editor extends JTextField implements ActionListener, Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		setText(sheet.print(cs.toString()));
+		try {
+			setText(sheet.printSlot(cs.toString()));
+		}
+		catch (XLException e) {
+			setText("FEL!");
+		}
 	}
 }
