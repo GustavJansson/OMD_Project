@@ -23,17 +23,16 @@ public class XLSheet extends Observable implements Environment {
 			if (sheet.containsKey(key)) {
 				remove(key);
 			}
-			Slot val;
-				val = SlotCreator.toSlot(text);
 				
-
-			if (!checkCircular(key, val)) {
-				sheet.put(key, val);
-			}	
-			
-			else {
-						throw new XLException("Fel inmatning i: "+key);
-			}		
+				try {
+					Slot val = SlotCreator.toSlot(text);
+					checkCircular(key, val);
+					sheet.put(key, val);
+				}
+				catch (XLException e) {
+					throw e;
+				}
+		
 		setChanged();
 		notifyObservers();
 	}
@@ -88,10 +87,10 @@ public class XLSheet extends Observable implements Environment {
     		value.getSlotData(this);
     	}
     	catch (XLException e) {
-    		return true;
+    		throw new XLException("Circular");
     	}
     	catch (NullPointerException e) {
-    		return true;
+    		throw new NullPointerException("Fel");
     	}
     	return false;
     }
