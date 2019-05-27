@@ -120,7 +120,7 @@ public class XLSheet extends Observable implements Environment {
     		value.getSlotData(this);
     	}
     	catch (XLException e) {
-    		throw e;
+    		throw new XLException("Fel in data");
     	}
     	sheet.put(key, oldVal);
     	return false;
