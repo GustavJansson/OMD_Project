@@ -6,7 +6,7 @@ import expr.ExprParser;
 
 public class SlotCreator {
 
-	public static Slot toSlot(String s) throws IOException {
+	public static Slot toSlot(String s) throws IOException  {
 		
 		Expression expr;
 		
@@ -17,12 +17,12 @@ public class SlotCreator {
 			ExprParser parser = new ExprParser();
 			try {
 				expr = new Expression(parser.build(s));
+				return expr;
 				
-			} catch (XLException e) {
+			} catch (Exception e) {
 				throw e;
 			}
 			
-			return expr;
 		}
 	}
 	

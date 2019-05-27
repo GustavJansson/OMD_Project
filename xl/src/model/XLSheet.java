@@ -1,5 +1,6 @@
 package model;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -25,12 +26,21 @@ public class XLSheet extends Observable implements Environment {
 			}
 				
 				try {
-					Slot val = SlotCreator.toSlot(text);
+					Slot val;
+					try {
+						val = SlotCreator.toSlot(text);
+					}
+					catch (XLException e) {
+						throw e;
+					}
 					checkCircular(key, val);
 					sheet.put(key, val);
 				}
 				catch (XLException e) {
 					throw e;
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 		
 		setChanged();
@@ -73,10 +83,10 @@ public class XLSheet extends Observable implements Environment {
 	@Override
 	public double value(String name) {
 		// TODO Auto-generated method stub
-		if (sheet.containsKey(name)) return sheet.get(name).getSlotData(this);
-		else {
-			throw new XLException("Denna plats finns ej");
-		}
+		if (sheet.get(name) == null) {
+            throw new XLException(name + " does not exist in the sheet.");
+        }
+        return sheet.get(name).getSlotData(this);
 	}
     
     
@@ -87,10 +97,10 @@ public class XLSheet extends Observable implements Environment {
     		value.getSlotData(this);
     	}
     	catch (XLException e) {
-    		throw new XLException("Circular");
+    		throw e;
     	}
     	catch (NullPointerException e) {
-    		throw new NullPointerException("Fel");
+    		throw e;
     	}
     	return false;
     }
