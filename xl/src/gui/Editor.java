@@ -8,6 +8,7 @@ import java.util.Observer;
 
 import javax.swing.JTextField;
 
+import model.XLException;
 import model.XLSheet;
 
 public class Editor extends JTextField implements ActionListener, Observer {
@@ -30,9 +31,13 @@ public class Editor extends JTextField implements ActionListener, Observer {
 		//works when pressing enter
 		String value = this.getText();
 		String key = cs.toString();
-		if (!value.equals("")) {
+
+		try {
 			sheet.add(key, value);
+		} catch (XLException e) {
+			
 		}
+		
 		
 
         

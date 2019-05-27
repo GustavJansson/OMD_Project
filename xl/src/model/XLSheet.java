@@ -32,8 +32,7 @@ public class XLSheet extends Observable implements Environment {
 			}	
 			
 			else {
-//						throw new XLException("Fel inmatning i: "+key);
-				JOptionPane.showMessageDialog(null, "Felaktig inmatning i ruta "+key);
+						throw new XLException("Fel inmatning i: "+key);
 			}		
 		setChanged();
 		notifyObservers();
