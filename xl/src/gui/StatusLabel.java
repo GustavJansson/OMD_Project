@@ -9,15 +9,21 @@ import model.XLSheet;
 
 public class StatusLabel extends ColoredLabel implements Observer {
 	private XLSheet sheet;
+	private String message;
 	
     public StatusLabel(XLSheet sheet) {
         super("", Color.WHITE);
         this.sheet = sheet;
         sheet.addObserver(this);
+        message = "";
         
     }
 
     public void update(Observable observable, Object object) {
-        setText("");
+        setText(message);
+
+    }
+    public void setString(String text) {
+    	message = text;
     }
 }

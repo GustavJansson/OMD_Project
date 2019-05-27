@@ -60,7 +60,12 @@ public class XLSheet extends Observable implements Environment {
     
     public String print(String key) {
     	if (sheet.containsKey(key)) {
-    		return sheet.get(key).calc(this);
+    		try {
+    			return sheet.get(key).calc(this);
+    		}
+    		catch(XLException e) {
+    			throw e;
+    		}
     	}
     	return "";
     }
@@ -83,8 +88,8 @@ public class XLSheet extends Observable implements Environment {
 	@Override
 	public double value(String name) {
 		// TODO Auto-generated method stub
-		if (sheet.get(name) == null) {
-            throw new XLException(name + " does not exist in the sheet.");
+		if (!sheet.containsKey(name)) {
+            throw new XLException(name + " saknar värde");
         }
         return sheet.get(name).getSlotData(this);
 	}
@@ -97,7 +102,7 @@ public class XLSheet extends Observable implements Environment {
     		value.getSlotData(this);
     	}
     	catch (XLException e) {
-    		throw e;
+    		throw new XLException("Fel in data");
     	}
     	catch (NullPointerException e) {
     		throw e;

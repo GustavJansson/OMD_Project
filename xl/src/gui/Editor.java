@@ -15,14 +15,15 @@ public class Editor extends JTextField implements ActionListener, Observer {
 
 	private CurrentSlot cs;
 	private XLSheet sheet;
+	private StatusLabel sl;
 
-
-    public Editor(XLSheet sheet, CurrentSlot cs) {
+    public Editor(XLSheet sheet, CurrentSlot cs, StatusLabel sl) {
     	this.cs = cs;
     	this.sheet = sheet;
         setBackground(Color.WHITE);
         addActionListener(this);
         cs.addObserver(this);
+        this.sl = sl;
 
     }
 
@@ -34,8 +35,10 @@ public class Editor extends JTextField implements ActionListener, Observer {
 
 		try {
 			sheet.add(key, value);
+			sl.setString(value);
 		} catch (XLException e) {
-			throw e;
+		//	throw e;
+			sl.setString(e.getMessage());
 		}   
 		
 	}
