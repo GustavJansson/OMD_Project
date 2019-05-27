@@ -33,9 +33,13 @@ public class SlotLabel extends ColoredLabel implements Observer, MouseListener{
 		//Vad som visas i rutan
 		try {
 			this.setText(sheet.print(position));
+			if(this.getBackground() == Color.RED) {
+				this.setBackground(Color.YELLOW);	
+			}
 		}
 		catch(XLException e) {
-			setText("!");
+			setText("FEL!");
+			this.setBackground(Color.RED);
 		}
 	}
 
@@ -48,7 +52,7 @@ public class SlotLabel extends ColoredLabel implements Observer, MouseListener{
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		if(this.getBackground() != Color.yellow) {
+		if(this.getBackground() != Color.yellow && this.getBackground() != Color.RED) {
 			this.setBackground(Color.LIGHT_GRAY);
 		}
 
@@ -57,7 +61,7 @@ public class SlotLabel extends ColoredLabel implements Observer, MouseListener{
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		if(this.getBackground() != Color.yellow) {
+		if(this.getBackground() != Color.yellow && this.getBackground() != Color.RED) {
 			this.setBackground(Color.WHITE);
 		}
 

@@ -50,7 +50,7 @@ public class Editor extends JTextField implements ActionListener, Observer {
 			setText(sheet.printSlot(cs.toString()));
 		}
 		catch (XLException e) {
-			setText("FEL!");
+			setText("");
 		}
 	}
 }
