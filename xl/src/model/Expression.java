@@ -21,7 +21,12 @@ public class Expression implements Slot{
 	@Override
 	public double getSlotData(Environment e) {
 		// TODO Auto-generated method stub
-		return expr.value(e);
+		try {
+			return expr.value(e);
+		}
+		catch(Exception e1) {
+			throw e1;
+		}
 	}
 	
 	@Override

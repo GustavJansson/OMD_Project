@@ -50,6 +50,8 @@ public class XLSheet extends Observable implements Environment {
 	
 	public void remove(String key) {
 		sheet.remove(key);
+        setChanged();
+        notifyObservers();
 	}
 	
 
@@ -104,12 +106,11 @@ public class XLSheet extends Observable implements Environment {
 	@Override
 	public double value(String name) {
 		// TODO Auto-generated method stub
-		try {
-			return sheet.get(name).getSlotData(this);
+		if(!sheet.containsKey(name)) {
+			throw new XLException(name+" saknar värde!");
 		}
-		catch (Exception e) {
-			throw e;
-		}
+		return sheet.get(name).getSlotData(this);
+
 	}
     
     
@@ -120,7 +121,7 @@ public class XLSheet extends Observable implements Environment {
     		value.getSlotData(this);
     	}
     	catch (XLException e) {
-    		throw new XLException("Fel in data");
+    		throw e;
     	}
     	sheet.put(key, oldVal);
     	return false;

@@ -35,7 +35,7 @@ public class SlotLabel extends ColoredLabel implements Observer, MouseListener{
 			this.setText(sheet.print(position));
 		}
 		catch(XLException e) {
-			setText("FEL!");
+			setText("!");
 		}
 	}
 
